@@ -86,3 +86,27 @@ Untested directions, in order of promise:
    instead of 149 is far less powerful.
 4. **Volatility rather than direction.** Returns are predictable at R²≈0.001,
    realised volatility at R²≈0.5+. Needs options data to trade.
+
+## 8. H3a — jump mispricing: REJECTED
+
+Premise: diffusive vol persists, jumps don't, so IV pricing total RV
+overprices recently-jumped names.
+
+Test 1 — forecasting fwd 21d RV (n=70,330, demeaned, NW 21 lags):
+
+    total RV only      R2 0.7360
+    continuous only    R2 0.7350
+    continuous + jump  R2 0.7379, jump coef +8.23 (t +8.03)
+
+Jump coefficient POSITIVE: jumps predict HIGHER future vol. Premise inverted.
+
+Test 2 — IV on its components (n=73,242):
+
+    bv_ma21    +1.2934 (t +88.82)   <- variance risk premium, ~29%
+    jump_ma21  +2.0863 (t  +1.70)   <- IV largely ignores jumps
+
+Combined: the market prices the persistent component and ignores the jump
+share, while the jump share does forecast future vol. That implies IV may
+UNDER-price jumpy names — the opposite of the hypothesis. Not pursued:
+post-hoc, and the effect is ~2 vol points across the realistic jump-share
+range against a t=1.70 IV response and real straddle spreads.
