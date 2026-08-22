@@ -127,3 +127,11 @@ jupyter notebook IB_Overnight_Model.ipynb
 ```
 
 Expect ~27 hours for a 150-ticker, 24-month IBKR pull (~27s per ticker-month).
+
+## Working with BQL
+
+`docs/BQL_FIELD_DISCOVERY.md` — how to find field names and parameters instead of
+guessing them. `dir(bq.data)` lists what exists; `print(bq.data.<field>.__doc__)`
+gives the full signature and valid enum values. Also documents the traps that cost
+real time here: the calendar-day grid, silent de-duplication of history fields,
+default parameter values, and deriving fields that do not exist.
