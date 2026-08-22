@@ -110,3 +110,36 @@ share, while the jump share does forecast future vol. That implies IV may
 UNDER-price jumpy names — the opposite of the hypothesis. Not pursued:
 post-hoc, and the effect is ~2 vol points across the realistic jump-share
 range against a t=1.70 IV response and real straddle spreads.
+
+## 9. H4 — buy vol in jumpy names: REJECTED
+
+Post-hoc hypothesis, generated from the H3a output. Tested against a properly
+specified 30-day surface (iv90/iv100/iv110 via the pct_moneyness parameter),
+which H3a lacked — that used BQL's 90-day unspecified-moneyness default.
+
+Skew (iv90 - iv110) on jump share, cross-sectionally demeaned, NW 21 lags,
+n = 73,215:
+
+    raw skew                  -3.139  (t -5.12)
+    relative skew (/ATM)      -0.136  (t -5.17)
+    controlling sd_dist       -2.857  (t -4.68)
+
+ATM 30d IV on jump share: +0.768 (t +0.48) — ATM genuinely does not respond.
+
+Skew NARROWS for jumpy names, and survives normalisation for the fixed-percentage
+moneyness artifact (sd_dist entered at t +14.45 but barely moved the jump
+coefficient). Direction is opposite to the hypothesis, which needed IV to
+UNDER-price jumpy names.
+
+Unresolved: jump_ma21 from bipower variation may capture microstructure events
+rather than economic jumps in liquid large caps. Not pursued — the trade is dead
+in either direction, and the H3a-implied edge was 1.8 vol points against
+1.5-5 point straddle spreads.
+
+BQL note: ivol_moneyness signature is
+    ivol_moneyness(dates=RNG, expiry='30D', pct_moneyness='100')
+expiry defaults to 90D and moneyness is otherwise unspecified — which is why the
+first IV export ran at 1.47x realised. print(bq.data.<field>.__doc__) gives the
+full signature and valid enum values; use it instead of guessing keyword names.
+
+Sealed holdout NOT opened.
