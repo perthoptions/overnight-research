@@ -1,0 +1,13 @@
+,value
+n_constituents,503
+open_field,px_open
+raw_rows_per_ticker,801.0
+n_sessions,550
+rows_per_ticker,543.4623015873016
+exact_snapshot_rows,0
+earnings_available,True
+earnings_rows,503
+model_df_rows,273355
+n_features,19
+labelled_rows,262758
+complete_sessions,529

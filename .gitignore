@@ -1,0 +1,41 @@
+# PRIVATE REPO: derived data is committed under data/.
+# The raw ib_cache/ is still excluded -- ~820MB of parquet that git
+# cannot delta-compress. Back that up separately or use Git LFS.
+
+# ---------------------------------------------------------------------------
+# DATA — never commit. Bloomberg (BQuant) and IBKR both restrict redistribution
+# of derived data. The code is publishable; the data is not.
+# ---------------------------------------------------------------------------
+ib_cache/
+*.pickle
+*.feather
+*.h5
+
+# Bloomberg-derived
+
+# IBKR-derived
+
+# Universe lists (harmless, but keep the repo reproducible from code)
+
+# Holdout state — machine-specific, and publishing it defeats the purpose
+
+# ---------------------------------------------------------------------------
+# Environment
+# ---------------------------------------------------------------------------
+ibenv/
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+*.log
+fetch.log
+
+# Credentials — no API keys, ever
+.env
+*.key
+config_local.py
+
+# raw 1-minute bar cache — regenerable in ~27h, back up separately
+ib_cache/

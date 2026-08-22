@@ -1,0 +1,12 @@
+{
+  "sealed_at": "2026-08-22T17:36:57",
+  "cut_date": "2026-02-23",
+  "research_sessions": 378,
+  "holdout_sessions": 126,
+  "research_rows": 55896,
+  "holdout_rows": 18702,
+  "holdout_sha256": "0c5f9715c80c6716",
+  "specification": null,
+  "registered_at": null,
+  "unsealed_at": []
+}
